@@ -1,0 +1,7 @@
+--agregar red en docker
+docker network ls
+--crear red en docker para practica
+docker network create --attachable -d bridge bankingNetwork
+
+--Descargar docker.-compose.yml de kafka y mysql-mongodb y ejecutar cada uno
+docker-compose up -d
