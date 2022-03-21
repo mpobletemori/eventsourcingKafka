@@ -1,19 +1,19 @@
-package com.banking.account.cmd.api.command;
+package com.banking.account.common.events;
 
-import com.banking.cqrs.core.commands.BaseCommand;
+import com.banking.cqrs.core.events.BaseEvent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 /*
-* Depositar dinero
+* Deposito de dinero realizado
 * */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class DepositFundsCommand extends BaseCommand {
+public class FundsDepositedEvent extends BaseEvent {
     //monto a depositar
     private double amount;
 }

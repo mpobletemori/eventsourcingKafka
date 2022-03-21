@@ -8,4 +8,6 @@ import lombok.Data;
 
 @Data
 public class WiithdrawFundsCommand extends BaseCommand {
+    //monto a retirar
+    private double amount;
 }
