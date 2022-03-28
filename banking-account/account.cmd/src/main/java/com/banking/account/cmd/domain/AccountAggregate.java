@@ -18,6 +18,10 @@ public class AccountAggregate extends AggregateRoot {
     private Boolean active;
     private double balance;
 
+    public double getBalance() {
+        return balance;
+    }
+
     //abrir cuenta bancaria
     public AccountAggregate(OpenAccountCommand command){
         raiseEvent(AccountOpenedEvent.builder()
