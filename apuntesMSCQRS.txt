@@ -5,3 +5,12 @@ docker network create --attachable -d bridge bankingNetwork
 
 --Descargar docker.-compose.yml de kafka y mysql-mongodb y ejecutar cada uno
 docker-compose up -d
+
+Credenciales acceso a bd
+ MYSQL_USER: 'vaxidrez'
+ MYSQL_PASSWORD: 'VaxiDrez2005$$'
+ MYSQL_ROOT_PASSWORD: 'VaxiDrez2005$'
+--Credenciales acceso mongodb 
+ MONGO_INITDB_ROOT_USERNAME: "vaxidrez"
+ MONGO_INITDB_ROOT_PASSWORD: "VaxiDrez2005$$"
+ usar en IDE VaxiDrez2005$
