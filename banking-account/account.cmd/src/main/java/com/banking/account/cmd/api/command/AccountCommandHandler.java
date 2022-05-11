@@ -25,7 +25,7 @@ public class AccountCommandHandler implements CommandHandler{
     }
 
     @Override
-    public void handle(WiithdrawFundsCommand command) {
+    public void handle(WithdrawFundsCommand command) {
         var aggregate = eventSourcingHandler.getById(command.getId());
         if(command.getAmount()>aggregate.getBalance()){
             throw new IllegalStateException("Insuficientes fondos ,no se puede retirar dinero");

@@ -21,7 +21,7 @@ public class CommandApplication {
 	public void registerHandlers(){
 		this.commandDispatcher.registerHandler(OpenAccountCommand.class,commandHandler::handle);
 		this.commandDispatcher.registerHandler(DepositFundsCommand.class,commandHandler::handle);
-		this.commandDispatcher.registerHandler(WiithdrawFundsCommand.class,commandHandler::handle);
+		this.commandDispatcher.registerHandler(WithdrawFundsCommand.class,commandHandler::handle);
 		this.commandDispatcher.registerHandler(CloseAccountCommand.class,commandHandler::handle);
 	}
 

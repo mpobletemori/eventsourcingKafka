@@ -7,7 +7,7 @@ import lombok.Data;
  */
 
 @Data
-public class WiithdrawFundsCommand extends BaseCommand {
+public class WithdrawFundsCommand extends BaseCommand {
     //monto a retirar
     private double amount;
 }
