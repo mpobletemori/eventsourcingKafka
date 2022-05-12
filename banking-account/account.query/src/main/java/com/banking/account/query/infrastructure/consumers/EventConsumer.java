@@ -1,4 +1,4 @@
-package com.banking.account.query.infraestructure.consumers;
+package com.banking.account.query.infrastructure.consumers;
 
 import com.banking.account.common.events.AccountClosedEvent;
 import com.banking.account.common.events.AccountOpenedEvent;

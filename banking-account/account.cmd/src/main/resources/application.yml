@@ -12,6 +12,8 @@ spring:
       authentication-database: admin
   kafka:
     producer:
-      bootstrap-servers: localhost:9892
-      key-serializer: org.apache.kafka.commom.serialization.StringSerializer
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+

@@ -16,8 +16,8 @@
 
     <modules>
         <module>../cqrs-es/cqrs.core</module>
-        <module>account.cmd</module>
         <module>account.common</module>
+        <module>account.cmd</module>
         <module>account.query</module>
     </modules>
 

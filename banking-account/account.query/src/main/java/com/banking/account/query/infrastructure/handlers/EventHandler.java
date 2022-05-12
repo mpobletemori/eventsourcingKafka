@@ -1,4 +1,4 @@
-package com.banking.account.query.infraestructure.handlers;
+package com.banking.account.query.infrastructure.handlers;
 
 import com.banking.account.common.events.AccountClosedEvent;
 import com.banking.account.common.events.AccountOpenedEvent;

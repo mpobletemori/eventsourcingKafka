@@ -1,5 +1,6 @@
 package com.banking.account.cmd.api.controllers;
 
+import com.banking.account.cmd.api.command.DepositFundsCommand;
 import com.banking.account.cmd.api.command.WithdrawFundsCommand;
 import com.banking.account.common.dto.BaseResponse;
 import com.banking.cqrs.core.exceptions.AggregateNotFoundException;
@@ -14,26 +15,29 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping(path="/api/v1/withDrawFunds")
+@RequestMapping(path ="/api/v1/withDrawFunds")
 public class WithdrawFundsController {
+
     private final Logger logger = Logger.getLogger(WithdrawFundsController.class.getName());
 
     @Autowired
     private CommandDispatcher commandDispatcher;
 
-    @PutMapping("/{id}")
-    public ResponseEntity<BaseResponse> withDrawFunds(@PathVariable(value="id") String id, @RequestBody WithdrawFundsCommand command){
-        try {
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<BaseResponse> withDrawFunds(@PathVariable(value="id") String id,
+                                                      @RequestBody WithdrawFundsCommand command){
+        try{
             command.setId(id);
-            this.commandDispatcher.sendCommand(command);
+            commandDispatcher.send(command);
             return new ResponseEntity<>(new BaseResponse("El retiro de dinero fue exitoso"), HttpStatus.OK);
-        }catch (IllegalStateException | AggregateNotFoundException e){
-            logger.log(Level.WARNING, MessageFormat.format("El cliente envio un request con errores {0}", e.toString()));
+        }catch(IllegalStateException  | AggregateNotFoundException e){
+            logger.log(Level.WARNING, MessageFormat.format("El cliente envio un request con errores {0} ", e.toString()));
             return new ResponseEntity<>(new BaseResponse(e.toString()), HttpStatus.BAD_REQUEST);
         }catch (Exception e){
-            var safeMessage = MessageFormat.format("Errores mientras procesaba el request {0}", id);
-            return new ResponseEntity<>(new BaseResponse(safeMessage), HttpStatus.INTERNAL_SERVER_ERROR);
+            var safeErrorMessage = MessageFormat.format("Errores mientras procesaba el request {id}", id);
+            return new ResponseEntity<>(new BaseResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
+
 }

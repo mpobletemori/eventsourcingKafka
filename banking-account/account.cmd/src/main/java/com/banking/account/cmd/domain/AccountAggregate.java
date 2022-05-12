@@ -10,19 +10,15 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-/*
-* Implementacion de aggregate concreto que gestiona los estados
-* */
 @NoArgsConstructor
 public class AccountAggregate extends AggregateRoot {
     private Boolean active;
     private double balance;
 
-    public double getBalance() {
-        return balance;
+    public double getBalance(){
+        return this.balance;
     }
 
-    //abrir cuenta bancaria
     public AccountAggregate(OpenAccountCommand command){
         raiseEvent(AccountOpenedEvent.builder()
                 .id(command.getId())
@@ -34,68 +30,50 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void apply(AccountOpenedEvent event){
-        this.id= event.getId();
+        this.id = event.getId();
         this.active = true;
         this.balance = event.getOpeningBalance();
     }
 
-    //Ejecuta el deposito de dinero
     public void depositFunds(double amount){
         if(!this.active){
             throw new IllegalStateException("Los fondos no pueden ser depositados en esta cuenta");
         }
 
-        if(amount < 0){
-            throw new IllegalStateException("El deposito de dinero no puede ser cero o menor a cero");
+        if(amount <= 0){
+            throw new IllegalStateException("El deposito de dinero no puede ser cero menos que cero");
         }
 
         raiseEvent(FundsDepositedEvent.builder()
                 .id(this.id)
                 .amount(amount)
                 .build());
+
     }
 
-    /*
-    * aplicar deposito de dinero
-    * */
     public void apply(FundsDepositedEvent event){
         this.id = event.getId();
-        this.balance+= event.getAmount();
+        this.balance += event.getAmount();
     }
 
-    /*
-    * Ejecuta evento de retiro de dinero
-    *
-    *
-    * */
-    public void withDrawFunds(double amount){
+    public void withdrawFunds(double amount){
         if(!this.active){
             throw new IllegalStateException("La cuenta bancaria esta cerrada");
         }
-
-        if(amount < 0){
-            throw new IllegalStateException("El retiro de dinero no puede ser cero o menor a cero");
-        }
-
         raiseEvent(FundsWithdrawnEvent.builder()
                 .id(this.id)
                 .amount(amount)
                 .build());
     }
-    /*
-    * Aplica retiro de dinero en cuenta de ahorros
-    * */
+
     public void apply(FundsWithdrawnEvent event){
         this.id = event.getId();
-        this.balance-= event.getAmount();
+        this.balance -= event.getAmount();
     }
 
-    /*
-    * Ejecuta cierre de cuenta corriente
-    * */
     public void closeAccount(){
-        if(!this.active){
-            throw new IllegalStateException("La cuenta bancaria esta cerrada");
+        if(!active){
+            throw new IllegalStateException("La cuenta de banco esta cerrada");
         }
 
         raiseEvent(AccountClosedEvent.builder()
@@ -103,11 +81,10 @@ public class AccountAggregate extends AggregateRoot {
                 .build());
     }
 
-    /*
-    * Aplica cierre de cuenta corriente
-    * */
     public void apply(AccountClosedEvent event){
-        this.id= event.getId();
+        this.id = event.getId();
         this.active = false;
     }
+
+
 }

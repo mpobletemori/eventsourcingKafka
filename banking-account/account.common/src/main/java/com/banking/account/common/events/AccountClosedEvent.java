@@ -5,12 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-/*
-* Evento cuenta cerrada
-* */
 @Data
 @SuperBuilder
 @NoArgsConstructor
 public class AccountClosedEvent extends BaseEvent {
-
 }

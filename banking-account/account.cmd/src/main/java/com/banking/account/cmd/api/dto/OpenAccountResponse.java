@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class OpenAccountResponse extends BaseResponse {
     private String id;
 
-    public OpenAccountResponse(String message,String id){
+    public OpenAccountResponse(String message, String id){
         super(message);
         this.id = id;
     }

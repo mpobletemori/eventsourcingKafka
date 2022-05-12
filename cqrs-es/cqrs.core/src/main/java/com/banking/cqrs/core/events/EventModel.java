@@ -1,6 +1,5 @@
 package com.banking.cqrs.core.events;
 
-import com.mongodb.client.model.Collation;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -10,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Builder
-@Document(collection="eventStore")
+@Document(collection = "eventStore")
 public class EventModel {
     @Id
     private String id;
@@ -19,5 +18,5 @@ public class EventModel {
     private String aggregateType;
     private int version;
     private String eventType;
-    private BaseEvent evenData;
+    private BaseEvent eventData;
 }
