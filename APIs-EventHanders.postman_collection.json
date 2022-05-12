@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "fef5e62d-a409-411d-91ba-3b7c131f201c",
+		"name": "APIs-EventHanders",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.-Abrir cuenta bancaria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"accountHolder\":\"Vaxi Drez\",\r\n \"accountType\":\"SAVINGS\",\r\n \"openingBalance\":50.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/openBankAccount",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"openBankAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.-Depositar Dinero en cuenta bancaria",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"amount\":50.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/depositFunds/6a7797e5-cbd9-4a50-9977-aa5418ed726d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"depositFunds",
+						"6a7797e5-cbd9-4a50-9977-aa5418ed726d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.-Retirar dinero de cuenta bancaria",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"amount\":50.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/v1/withDrawFunds/fffffff-1052-1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"withDrawFunds",
+						"fffffff-1052-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.-Cerrar cuenta bancaria",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/v1/closeBankAccount/6a7797e5-cbd9-4a50-9977-aa5418ed726d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"closeBankAccount",
+						"6a7797e5-cbd9-4a50-9977-aa5418ed726d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-Consultar todas las cuentas bancarias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/bankAccountLookup/",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.-Consultar cuenta bancaria por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/bankAccountLookup/byId/f8bebeae-2029-413c-b4d0-230e91a7b2bb",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"byId",
+						"f8bebeae-2029-413c-b4d0-230e91a7b2bb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.-Consultar cuenta bancaria por Holder (titular cuenta)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/bankAccountLookup/byHolder/Manu Drez",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"byHolder",
+						"Manu Drez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.1.-Consultar cuentas bancarias con saldo menor a valor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/bankAccountLookup/withBalance/LESS_THAN/51",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"withBalance",
+						"LESS_THAN",
+						"51"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.2.-Consultar cuentas bancarias con saldo mayor a valor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/bankAccountLookup/withBalance/GREATER_THAN/49",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"bankAccountLookup",
+						"withBalance",
+						"GREATER_THAN",
+						"49"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
